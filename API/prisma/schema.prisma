@@ -9,3 +9,16 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id String @id @map("_id") @default(auto()) @db.ObjectId()
+  first_name String
+  second_name String?
+  last_name String
+  second_last_name String?
+  documentID String @unique
+  country String
+  email String @unique
+  password String
+  profile_img String @default("https://t3.ftcdn.net/jpg/03/46/83/96/240_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg")
+}
