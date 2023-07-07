@@ -5,31 +5,34 @@ const tokenSecret = process.env.TOKEN_SECRET
 const tokenExp = process.env.TOKEN_EXP
 
 const signUp = async (req, res) =>{
-    const {firstName, secondName, lastName, secondLastName, 
-        documentId, country, email, password, profile_img} = req.body;
+    const {firstName, secondName, lastName, secondLastName, birthDay, phone,
+        documentId, country, email, password, profileImg} = req.body;
     try {
         const user= await prisma.user.create({
             data: {
-                first_name: firstName,
-                second_name: secondName,
-                last_name: lastName,
-                second_last_name: secondLastName,
-                documentID: documentId,
-                country: country,
-                email: email,
+                firstName,
+                secondName,
+                lastName,
+                secondLastName,
+                birthDay: new Date(birthDay),
+                phone,
+                documentId,
+                country,
+                email,
                 password: await encryptPassword(password),
-                profile_img: profile_img
+                profileImg
             },
             select: { // User sin exponer el password
-                id: true,
-                first_name: true,
-                second_name: true,
-                last_name: true,
-                second_last_name: true,
-                documentID: true,
+                firstName: true,
+                secondName: true,
+                lastName: true,
+                secondLastName: true,
+                birthDay: true,
+                phone: true,
+                documentId: true,
                 country: true,
                 email: true,
-                profile_img: true
+                profileImg: true
               }
         });
         res.status(201).json({"message": "User created", user})
@@ -71,15 +74,16 @@ const profile = async (req, res) => {
                 id: req.userId // Cargado en validateToken
             },
             select: { // User sin exponer el password
-                id: true,
-                first_name: true,
-                second_name: true,
-                last_name: true,
-                second_last_name: true,
-                documentID: true,
+                firstName: true,
+                secondName: true,
+                lastName: true,
+                secondLastName: true,
+                birthDay: true,
+                phone: true,
+                documentId: true,
                 country: true,
                 email: true,
-                profile_img: true
+                profileImg: true
               }
         })
         res.json(user)
