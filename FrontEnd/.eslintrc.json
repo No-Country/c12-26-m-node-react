@@ -19,13 +19,13 @@
         },
         "ecmaVersion": "latest",
         "sourceType": "module",
-        "project": "./tsconfig.json"
+        "project":["./tsconfig.json", "./tailwind.config.js"], //Esta es la linea que causa el bug de Eslint, si causa error ponerle en vez del punto "frontend" y sino viceversa.
+        "tsConfigRootDir":"frontend"
     },
     "plugins": [
         "react",
         "@typescript-eslint",
-        "prettier",
-        "plugins: tailwind/recommended"
+        "prettier"
     ],
     "rules": {
         "react/react-in-jsx-scope": ["off"],

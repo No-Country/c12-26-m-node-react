@@ -3,8 +3,8 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-     <h1>No country Wallet</h1>
+    <div className="flex flex-col items-center">
+      <h1>No country Wallet</h1>
     </div>
   );
 }
