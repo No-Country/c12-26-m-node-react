@@ -41,6 +41,11 @@ const signUp = async (body) => {
       password: await encryptPassword(password),
       profileImg,
       qrCodeUrl: qrCode,
+      wallet: {
+        create: {
+          amount: 0,
+        },
+      },
     },
     select: {
       // User sin exponer el password
@@ -55,6 +60,7 @@ const signUp = async (body) => {
       email: true,
       profileImg: true,
       qrCodeUrl: true,
+      wallet: true,
     },
   });
 
