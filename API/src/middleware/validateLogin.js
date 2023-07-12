@@ -1,0 +1,30 @@
+const prisma = require("../db");
+const jwt = require("jsonwebtoken");
+const { comparePassword } = require("../utils/passwordHash");
+const { TOKEN_SECRET, TOKEN_EXP } = process.env;
+
+async function validateLogin(body) {
+  const { email, password } = body;
+  console.log("Validating Login");
+
+  if (!email) {
+    return {
+      containErrors: true,
+      message: "This field is required, please enter an e-mail address.",
+    };
+  }
+
+  if (!password) {
+    return {
+      containErrors: true,
+      message: "This field is required, please enter a password.",
+    };
+  }
+
+  return {
+    containErrors: false,
+    message: "You have been successfully validated.",
+  };
+}
+
+module.exports = { validateLogin };
