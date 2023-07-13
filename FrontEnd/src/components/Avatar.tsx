@@ -1,14 +1,13 @@
 import React from "react";
-import { RxAvatar } from "react-icons/rx";
-
-// interface AvatarProps {
-//   src: string | null | undefined;
-// }
 
 export default function Avatar() {
   return (
     <div>
-      <RxAvatar />
+      <img
+        src="/images/user.jpg"
+        alt="Avatar"
+        className="rounded-full h-[30px] w-[30px]"
+      />
     </div>
   );
 }

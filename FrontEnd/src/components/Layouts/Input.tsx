@@ -5,13 +5,15 @@ interface InputProps {
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors;
   required: boolean;
+  placeholder: string;
 }
 
-function Input({ id, register, errors, required }: InputProps) {
+function Input({ id, register, errors, required, placeholder }: InputProps) {
   return (
     <div className="w-full relative">
       <input
         {...register(id, { required })}
+        placeholder={placeholder}
         className={`
           peer
           w-full
