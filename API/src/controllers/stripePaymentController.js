@@ -6,9 +6,7 @@ const {
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 const createPaymentIntent = async (amount, userId) => {
-  console.log(process.env.STRIPE_PRIVATE_KEY)
   const amountFinal = amount * 100 //convertir a centavos 1usd = 100 centavos
-  console.log('el monto es ', amountFinal)
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
     amount: amountFinal,
