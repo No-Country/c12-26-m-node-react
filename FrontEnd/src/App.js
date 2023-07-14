@@ -1,24 +1,30 @@
 import React from "react";
 import "./App.css";
 import Skeleton from "react-loading-skeleton";
-import { useSelector } from "react-redux";
 import Navbar from "./components/Navbar/Navbar";
-import RegisterModal from "./components/Modals/RegisterModal";
+import Register from "./components/Modals/Register";
+import Login from "./components/Modals/Login";
 
 function App() {
-  const isOpen = useSelector((state) => state.modal.isOpen);
-
   return (
     <>
       <div>
         <Navbar />
       </div>
-      <div className="flex flex-col items-center pt-28">
-        <h1>Latam Wallet</h1>
-        {isOpen && <RegisterModal />}
-        <Skeleton />
-        <Skeleton />
-        <Skeleton />
+      <div className="flex flex-row items-center justify-around">
+        <div>
+          <h1 className="text-2xl">Latam Wallet Landing Page</h1>
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+        </div>
+        <div>
+        <Register />
+        </div>
+      
       </div>
     </>
   );
