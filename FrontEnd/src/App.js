@@ -4,6 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import Navbar from "./components/Navbar/Navbar";
 import Register from "./components/Modals/Register";
 import Login from "./components/Modals/Login";
+import Heading from "./components/Layouts/Heading";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       </div>
       <div className="flex flex-row items-center justify-around">
         <div>
-          <h1 className="text-2xl">Latam Wallet Landing Page</h1>
+          <Heading title="Latam Wallet Landing Page" />
             <Skeleton />
             <Skeleton />
             <Skeleton />

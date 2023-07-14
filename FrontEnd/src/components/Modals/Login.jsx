@@ -3,10 +3,15 @@ import { useForm } from 'react-hook-form'
 import Skeleton from 'react-loading-skeleton'
 import axios from "axios"
 import toast from "react-hot-toast";
+import Input from '../Layouts/Input';
 export default function Login() {
     const [isLoading, setIsLoading] = useState(false);
-    const form = useForm()
-    const { register, handleSubmit } = form
+ 
+    const { register, handleSubmit, formState: {errors} } = useForm({defaultValues: {
+        email: "",
+        password: "",
+    }})
+
 
     const onSubmit = (data) => {
         setIsLoading(true);
@@ -31,22 +36,24 @@ export default function Login() {
                 <div className="mt-4">
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 undefined"> Email </label>
                     <div className="flex flex-col items-start">
-                        <input
-                            type="email"
-                            id="email"
-                            {...register("email")}
-                            className="block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        <Input
+                            type={"email"}
+                            id={"email"}
+                            register={register}
+                            disabled={isLoading}
+                            errors={errors}
                         />
                     </div>
                 </div>
                 <div className="mt-4">
                     <label htmlFor="password" className="block text-sm font-medium text-gray-700 undefined"> Password </label>
                     <div className="flex flex-col items-start">
-                        <input
-                            type="password"
-                            id="password"
-                            {...register("password")}
-                            className="block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        <Input
+                            type={"password"}
+                            id={"password"}
+                            register={register}
+                            disabled={isLoading}
+                            errors={errors}
                         />
                     </div>
                 </div>

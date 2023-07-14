@@ -6,11 +6,24 @@ import Skeleton from "react-loading-skeleton";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import Countries from "../../assets/countrybyname.json"
+import Input from "../Layouts/Input"
+
 export default function RegisterModal() {
     const [isLoading, setIsLoading] = useState(false);
 
-    const form = useForm()
-    const { register, handleSubmit } = form
+    const { register, handleSubmit, formState: {errors} } = useForm({defaultValues: {
+        birthDay:"",
+        confirmPassword: "",
+        country: "",
+        email: "",
+        firstName: "",
+        lastName: "",
+        password: "",
+        phone: "",
+        documentId:""
+    }})
+
+    
     const onSubmit = (data) => {
       setIsLoading(true);
         console.log(data)
@@ -35,88 +48,96 @@ export default function RegisterModal() {
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 undefined">Name</label>
                             <div className="flex flex-col items-start">
-                                <input
-                                    type="text"
-                                    id="firstName"
-                                    {...register("firstName")}
-                                    className="block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                <Input
+                                    type={"text"}
+                                    id={"firstName"}
+                                    register={register}
+                                    errors={errors}
+                                    disabled={isLoading}
                                 />
                             </div>
                         </div>
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 undefined">Last name</label>
                             <div className="flex flex-col items-start">
-                                <input
-                                    type="text"
-                                    id="lastName"
-                                    {...register("lastName")}
-                                    className="block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                <Input
+                                    type={"text"}
+                                    id={"lastName"}
+                                    register={register}
+                                    errors={errors}
+                                    disabled={isLoading}
                                 />
                             </div>
                         </div>
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 undefined">Phone Number</label>
                             <div className="flex flex-col items-start">
-                                <input
-                                    type="number"
-                                    id="phone"
-                                    {...register("phone")}
-                                    className="block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                <Input
+                                    type={"number"}
+                                    id={"phone"}
+                                    register={register}
+                                    errors={errors}
+                                    disabled={isLoading}
                                 />
                             </div>
                         </div>
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 undefined">Document Id</label>
                             <div className="flex flex-col items-start">
-                                <input
-                                    type="number"
-                                    id="documentId"
-                                    {...register("documentId")}
-                                    className="block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                <Input
+                                    type={"number"}
+                                    id={"documentId"}
+                                    register={register}
+                                    errors={errors}
+                                    disabled={isLoading}
                                 />
                             </div>
                         </div>
                         <div className="mt-4">
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700 undefined"> Birth Date</label>
                             <div className="flex flex-col items-start">
-                                <input
-                                    type="date"
-                                    id="birthDay"
-                                    {...register("birthDay")}
-                                    className="block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                <Input
+                                    type={"date"}
+                                    id={"birthDay"}
+                                    register={register} 
+                                    errors={errors}
+                                    disabled={isLoading}                               
                                 />
                             </div>
                         </div>
                         <div className="mt-4">
                             <label htmlFor="email" className="block text-sm font-medium text-gray-700 undefined"> Email </label>
                             <div className="flex flex-col items-start">
-                                <input
-                                    type="email"
-                                    id="email"
-                                    {...register("email")}
-                                    className="block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                <Input
+                                    type={"email"}
+                                    id={"email"}
+                                    register={register}
+                                    errors={errors}
+                                    disabled={isLoading}
                                 />
                             </div>
                         </div>
                         <div className="mt-4">
                             <label htmlFor="password" className="block text-sm font-medium text-gray-700 undefined"> Password </label>
                             <div className="flex flex-col items-start">
-                                <input
-                                    type="password"
-                                    id="password"
-                                    {...register("password")}
-                                    className="block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                <Input
+                                    type={"password"}
+                                    id={"password"}
+                                    register={register}
+                                    errors={errors}
+                                    disabled={isLoading}
                                 />
                             </div>
                         </div>
                         <div className="mt-4">
                             <label htmlFor="password_confirmation" className="block text-sm font-medium text-gray-700 undefined"> Confirm Password</label>
                             <div className="flex flex-col items-start">
-                                <input
-                                    type="password"
-                                    id="confirmPassword"
-                                    {...register("confirmPassword")}
-                                    className="block w-full mt-1 p-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                <Input
+                                    type={"password"}
+                                    id={"confirmPassword"}
+                                    register={register}
+                                    errors={errors}
+                                    disabled={isLoading}
                                 />
                             </div>
                         </div>
