@@ -6,7 +6,7 @@ export default function Avatar() {
       <img
         src="/images/user.jpg"
         alt="Avatar"
-        className="rounded-full h-[30px] w-[30px]"
+        className="m-2 rounded-full h-[30px] w-[30px]"
       />
     </div>
   );
