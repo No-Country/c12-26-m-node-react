@@ -1,10 +1,10 @@
-function Input({ id, register, type, errors,disabled}) {
+function Input({ id, register, type, errors,disabled, required}) {
   return (
     <div className="w-full relative">
       <input
         type={type}
         disabled={disabled}
-        {...register(id)}
+        {...register(id, { required })}
         className={`
           block w-full mt-1 p-2 
           border-gray-300 

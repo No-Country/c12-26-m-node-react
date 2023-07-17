@@ -4,14 +4,15 @@ import Skeleton from 'react-loading-skeleton'
 import axios from "axios"
 import toast from "react-hot-toast";
 import Input from '../Layouts/Input';
+import { useDispatch } from 'react-redux';
+import { showLogin, showRegister } from '../../hooks/AuthSlice';
 export default function Login() {
+    const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false);
- 
-    const { register, handleSubmit, formState: {errors} } = useForm({defaultValues: {
+    const { register, handleSubmit, formState: {errors}, reset } = useForm({defaultValues: {
         email: "",
         password: "",
     }})
-
 
     const onSubmit = (data) => {
         setIsLoading(true);
@@ -19,6 +20,7 @@ export default function Login() {
         axios.post(`${process.env.REACT_APP_API_URL}login`, data)
         .then(() => {
           toast.success('Registered!');
+          reset()
         })
         .catch((error) => { 
           toast.error(error);
@@ -60,16 +62,16 @@ export default function Login() {
                 <a href="about_blank" className="text-xs text-purple-600 hover:underline"> Forget Password?</a>
                 <div className="flex items-center mt-4">
                     <button onClick={handleSubmit(onSubmit)} className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-                        Register
+                        Login
                     </button>
                 </div>
             </form>
             <div className="mt-4 text-grey-600">
                 Don't have an account?{" "}
                 <span>
-                    <a className="text-purple-600 hover:underline" href="about_blank">
+                    <button className="text-purple-600 hover:underline" href="about_blank">
                         Register
-                    </a>
+                    </button>
                 </span>
             </div>
             <div className="flex items-center w-full my-4">

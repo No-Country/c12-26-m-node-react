@@ -7,11 +7,13 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import Countries from "../../assets/countrybyname.json"
 import Input from "../Layouts/Input"
+import { showLogin, showRegister } from "../../hooks/AuthSlice";
+import { useDispatch } from "react-redux";
 
 export default function RegisterModal() {
+    const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false);
-
-    const { register, handleSubmit, formState: {errors} } = useForm({defaultValues: {
+    const { register, handleSubmit, formState: {errors}, reset } = useForm({defaultValues: {
         birthDay:"",
         confirmPassword: "",
         country: "",
@@ -30,6 +32,7 @@ export default function RegisterModal() {
       axios.post(`${process.env.REACT_APP_API_URL}users/newuser`, data)
       .then(() => {
         toast.success('Registered!');
+        reset()
       })
       .catch((error) => { 
         toast.error(error);
@@ -54,6 +57,7 @@ export default function RegisterModal() {
                                     register={register}
                                     errors={errors}
                                     disabled={isLoading}
+                                    required
                                 />
                             </div>
                         </div>
@@ -66,6 +70,7 @@ export default function RegisterModal() {
                                     register={register}
                                     errors={errors}
                                     disabled={isLoading}
+                                    required
                                 />
                             </div>
                         </div>
@@ -78,6 +83,7 @@ export default function RegisterModal() {
                                     register={register}
                                     errors={errors}
                                     disabled={isLoading}
+                                    required
                                 />
                             </div>
                         </div>
@@ -90,6 +96,7 @@ export default function RegisterModal() {
                                     register={register}
                                     errors={errors}
                                     disabled={isLoading}
+                                    required
                                 />
                             </div>
                         </div>
@@ -101,7 +108,8 @@ export default function RegisterModal() {
                                     id={"birthDay"}
                                     register={register} 
                                     errors={errors}
-                                    disabled={isLoading}                               
+                                    disabled={isLoading}  
+                                    required                             
                                 />
                             </div>
                         </div>
@@ -114,6 +122,7 @@ export default function RegisterModal() {
                                     register={register}
                                     errors={errors}
                                     disabled={isLoading}
+                                    required
                                 />
                             </div>
                         </div>
@@ -126,6 +135,7 @@ export default function RegisterModal() {
                                     register={register}
                                     errors={errors}
                                     disabled={isLoading}
+                                    required
                                 />
                             </div>
                         </div>
@@ -138,6 +148,7 @@ export default function RegisterModal() {
                                     register={register}
                                     errors={errors}
                                     disabled={isLoading}
+                                    required
                                 />
                             </div>
                         </div>
@@ -162,9 +173,9 @@ export default function RegisterModal() {
                     <div className="mt-4 text-grey-600">
                         Already have an account?{" "}
                         <span>
-                            <a className="text-purple-600 hover:underline" href="about_blank">
+                            <button className="text-purple-600 hover:underline" href="about_blank">
                                 Log in
-                            </a>
+                            </button>
                         </span>
                     </div>
                     <div className="flex items-center w-full my-4">
