@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import Countries from "../../assets/countrybyname.json"
 import Input from "../Layouts/Input"
-import { showLogin, showRegister } from "../../hooks/AuthSlice";
+import { openModal, showLogin, showRegister } from "../../hooks/modalSlice";
 import { useDispatch } from "react-redux";
 
 export default function RegisterModal() {
@@ -173,7 +173,7 @@ export default function RegisterModal() {
                     <div className="mt-4 text-grey-600">
                         Already have an account?{" "}
                         <span>
-                            <button className="text-purple-600 hover:underline" href="about_blank">
+                            <button onClick={() => dispatch(openModal())}className="text-purple-600 hover:underline" href="about_blank">
                                 Log in
                             </button>
                         </span>

@@ -5,9 +5,12 @@ import axios from "axios"
 import toast from "react-hot-toast";
 import Input from '../Layouts/Input';
 import { useDispatch } from 'react-redux';
-import { showLogin, showRegister } from '../../hooks/AuthSlice';
+import {getCurrentUser} from "../../hooks/CurrentUserSlice"
+import { closeModal } from '../../hooks/modalSlice';
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false);
     const { register, handleSubmit, formState: {errors}, reset } = useForm({defaultValues: {
         email: "",
@@ -18,15 +21,19 @@ export default function Login() {
         setIsLoading(true);
           console.log(data)
         axios.post(`${process.env.REACT_APP_API_URL}login`, data)
-        .then(() => {
-          toast.success('Registered!');
+        .then((response) => {
+          toast.success(response.data.message);
+          console.log(response)
+          dispatch(getCurrentUser(response.data))
           reset()
+          navigate('/main');
         })
         .catch((error) => { 
           toast.error(error);
         })
         .finally(() => {
           setIsLoading(false);
+          
         })
       
       };
@@ -69,7 +76,7 @@ export default function Login() {
             <div className="mt-4 text-grey-600">
                 Don't have an account?{" "}
                 <span>
-                    <button className="text-purple-600 hover:underline" href="about_blank">
+                    <button onClick={() => dispatch(closeModal())} useNavigate className="text-purple-600 hover:underline" href="about_blank">
                         Register
                     </button>
                 </span>
