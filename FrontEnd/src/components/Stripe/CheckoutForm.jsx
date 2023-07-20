@@ -1,13 +1,20 @@
-import { PaymentElement } from "@stripe/react-stripe-js";
-import { useState } from "react";
-import { useStripe, useElements } from "@stripe/react-stripe-js";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { useState, useEffect } from "react";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ options }) {
   const stripe = useStripe();
   const elements = useElements();
 
   const [message, setMessage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
+
+  useEffect(() => {
+    // Verificar si el componente CardElement está montado correctamente
+    if (elements) {
+      // si el componente se ha montado correctamente
+      console.log("CardElement mounted successfully");
+    }
+  }, [elements]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,17 +26,42 @@ export default function CheckoutForm() {
 
     setIsProcessing(true);
 
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        //SUCCES PAGE HERE
-      },
-    });
+    try {
+      // Realizar confirmación del intento de pago con el monto y el elemento de pago de Stripe
+      const { paymentIntent, error } = await stripe.confirmCardPayment(
+        options.clientSecret,
+        {
+          payment_method: {
+            card: elements.getElement(CardElement),
+          },
+        },
+      );
 
-    if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
-    } else {
-      setMessage("An unexpected error occured.");
+      if (error) {
+        setMessage(error.message);
+      } else if (paymentIntent.status === "requires_action") {
+        // Si el pago requiere autenticación adicional (3D Secure), se redirige al cliente
+        setIsProcessing(false);
+        stripe.handleCardAction(paymentIntent.client_secret).then((result) => {
+          if (result.error) {
+            setMessage(result.error.message);
+          } else {
+            // Confirmación exitosa después de la autenticación adicional
+            setMessage("Payment succeeded!");
+            // Manejar el caso de éxito, por ejemplo, mostrar un mensaje de éxito o actualizar el saldo de la wallet.
+          }
+        });
+      } else {
+        // Confirmación exitosa del intento de pago
+        setMessage("Payment succeeded!");
+        // Manejar el caso de éxito, por ejemplo, mostrar un mensaje de éxito o actualizar el saldo de la wallet.
+      }
+    } catch (error) {
+      console.error(
+        "Error durante la confirmación del intento de pago:",
+        error,
+      );
+      setMessage("An unexpected error occurred.");
     }
 
     setIsProcessing(false);
@@ -37,13 +69,12 @@ export default function CheckoutForm() {
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
-      <PaymentElement id="payment-element" />
+      {/* Asegúrar de que CardElement se renderice dentro del formulario */}
+      <CardElement id="card-element" options={options} />
       <button disabled={isProcessing || !stripe || !elements} id="submit">
-        <span>
-          {isProcessing ? "Processing ... " : "Pay now"}
-        </span>
+        <span>{isProcessing ? "Processing ... " : "Pay Now"}</span>
       </button>
-      {/* Show any error or success messages */}
+      {/* Mostrar cualquier mensaje de error o éxito */}
       {message && <div id="payment-message">{message}</div>}
     </form>
   );
