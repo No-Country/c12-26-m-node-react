@@ -35,7 +35,6 @@ const transferBalanceUserToUserByEmail = async (userId, body) =>{
                     await decreaseWalletAmount(senderWalletId, amount)
                     await increaseWalletAmount(receiverWalletId, amount)
                     return {
-                        isvalidateTransfer,
                         containErrors: false,
                         message: "Successful transfer"
                     }
@@ -48,12 +47,11 @@ const transferBalanceUserToUserByEmail = async (userId, body) =>{
                       );
                 }
             }else{
-                throw new Error(
-                    JSON.stringify({
-                      containErrors: true,
-                      message: "Balance insufficient",
-                    })
-                  );
+
+                return {
+                    containErrors: true,
+                    message: "Balance insufficient"
+                }
             }
             
         } catch (error) {
