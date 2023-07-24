@@ -86,4 +86,17 @@ const hasSufficientBalance = async (walletId, amount) =>{
   }
 }
 
-module.exports = {getWalletIdByUserId, getWalletIdByUserEmail, increaseWalletAmount, decreaseWalletAmount, hasSufficientBalance}
+const userWalletBalance = async (walletId) =>{
+  try {
+    const wallet = await prisma.wallet.findUnique({
+      where: {
+        walletid: walletId
+      }
+    })
+    return wallet.amount
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+module.exports = {getWalletIdByUserId, getWalletIdByUserEmail, increaseWalletAmount, decreaseWalletAmount, hasSufficientBalance, userWalletBalance}

@@ -3,6 +3,7 @@ const prisma = require("../db");
 const { comparePassword } = require("../utils/passwordHash");
 const { TOKEN_SECRET, TOKEN_EXP } = process.env;
 const { validateLogin } = require("../middleware/validateLogin");
+const { getWalletIdByUserId, userWalletBalance } = require("./walletController");
 
 const signIn = async (body) => {
   let isValidate = await validateLogin(body);
@@ -36,10 +37,12 @@ const signIn = async (body) => {
   }
 
   const token = jwt.sign({ id: user.id }, TOKEN_SECRET, { expiresIn: "2w" });
-
+  const userWalletId = await getWalletIdByUserId(user.id)
+  const userWalletAmount = await userWalletBalance(userWalletId)
   return {
     token,
     user,
+    balance: userWalletAmount,
     ...isValidate,
     containErrors: false,
     message: "You have successfully logged in, welcome.",
