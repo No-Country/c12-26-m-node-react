@@ -5,11 +5,10 @@ const {
   getUsers,
   profile,
 } = require("../controllers/userController");
-const validateToken = require("../middleware/validateToken");
+
 
 const router = Router();
 
-// router.get("/profile", validateToken, profile);
 
 router.post("/newuser", async (req, res) => {
   try {

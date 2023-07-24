@@ -1,7 +1,6 @@
 const { Router } = require('express')
 const { transferBalanceUserToUserByEmail } = require('../controllers/transferBalanceController')
 const validateToken = require('../middleware/validateToken')
-const { validateTransferByEmail } = require('../middleware/validateTransfer')
 
 const router = Router()
 

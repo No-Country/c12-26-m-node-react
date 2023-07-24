@@ -1,7 +1,5 @@
 const prisma = require("../db");
 const jwt = require("jsonwebtoken");
-const { comparePassword } = require("../utils/passwordHash");
-const { TOKEN_SECRET, TOKEN_EXP } = process.env;
 
 async function validateLogin(body) {
   const { email, password } = body;
