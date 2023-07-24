@@ -1,4 +1,3 @@
-const prisma = require('../db')
 const {
   getWalletIdByUserId,
   increaseWalletAmount,
