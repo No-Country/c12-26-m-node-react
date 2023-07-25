@@ -76,7 +76,6 @@ const hasSufficientBalance = async (walletId, amount) =>{
     })
     console.log(wallet)
     if (wallet.amount >= amount){
-      console.log(wallet)
       return true
     }else{
       return false
