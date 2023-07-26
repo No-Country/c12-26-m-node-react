@@ -72,4 +72,4 @@ const getUsers = async function () {
   return allUsers;
 };
 
-module.exports = { signUp, getUsers};
+module.exports = { signUp, getUsers };
