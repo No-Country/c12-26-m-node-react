@@ -32,6 +32,17 @@ model Wallet {
   userId          String     @unique @db.ObjectId
   amount          Float      @default(0)
   user            User       @relation(fields: [userId], references: [id])
+  transactions    Transaction[]
 }
 
+model Transaction {
+  id              String     @id @map("_id") @default(auto()) @db.ObjectId()
+  walletid        String     @db.ObjectId
+  type            String     
+  amount          Float
+  createdAt       DateTime   @default(now())
+  toEmail         String?
+  toWalletAddress String?
+  wallet          Wallet     @relation(fields: [walletid], references: [walletid])
+}
 
