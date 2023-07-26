@@ -26,13 +26,11 @@ export default function Login() {
 
   const onSubmit = (data) => {
     setIsLoading(true);
-    console.log(data);
     axios
       .post(`${process.env.REACT_APP_API_URL}login`, data)
       .then((response) => {
         const responseData = response.data; // Obtiene el objeto completo de la respuesta
         toast.success(responseData.message); // Muestra el mensaje de éxito o error utilizando solo la propiedad "message"
-        console.log(responseData);
         dispatch(getCurrentUser(responseData)); // Actualiza el estado del usuario
         reset();
         navigate("/main");

@@ -1,16 +1,17 @@
-function Input({ id, register, type, errors,disabled, required}) {
+function Input({ id, register, type, errors,disabled,placeholder, required,number}) {
   return (
     <div className="w-full relative">
       <input
         type={type}
         disabled={disabled}
-        {...register(id, { required })}
+        placeholder={placeholder}
+        {...register(id, {valueAsNumber: number,  required })}
         className={`
           block w-full mt-1 p-2 
-          border-gray-300 
+          border-gray-800 
           rounded-md 
           shadow-sm 
-          focus:border-indigo-300 
+          focus:border-gray-300 
           focus:ring 
           focus:ring-indigo-200 
           focus:ring-opacity-50
