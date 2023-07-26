@@ -2,7 +2,6 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useState, useEffect } from "react";
 
 export default function CheckoutForm({ options }) {
-  const { clientSecret, appearance} = options
   const stripe = useStripe();
   const elements = useElements();
 

@@ -9,7 +9,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 export default function Payment() {
   const [clientSecret, setClientSecret] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+
   const { user } = useSelector((state) => state.user);
   const [amount, setAmount] = useState(0);
   const appearance = {
@@ -54,7 +54,7 @@ export default function Payment() {
 
   return (
     <div className=" p-5 flex flex-col h-screen w-2/3 items-center justify-center">
-      <div className="bg-white sm:w-full rounded-xl mb-4">
+      <div className="mx-auto box-border w-[365px] border bg-white p-4 rounded-lg">
         <Heading title="Transferir Dinero" />
         <div className="flex flex-col items-start">
           <input
@@ -63,7 +63,6 @@ export default function Payment() {
             value={amount}
             placeholder="Ingresa el monto"
             onChange={(e) => setAmount(e.target.value)}
-            disabled={isLoading}
             min="0" // Asegurar que el monto no sea negativo
             inputMode="numeric" // Permitir solo entradas numéricas
             className="w-full mt-1 py-2 px-3 bg-white border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"

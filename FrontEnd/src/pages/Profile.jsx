@@ -1,9 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import UserAuth from './UserAuth';
 
 export default function Profile() {
     const { user } = useSelector((state) => state.user);
   return (
+   user ? (
     <div>
          <div className='bg-[#6528BD] w-screen mt-[80px] text-white shadow-sm p-4 flex flex-col justify-center items-center '>
             <img src="images/Group 51.svg" alt="User" className='rounded-full w-[150px]' />
@@ -31,5 +33,6 @@ export default function Profile() {
          </div>
          </div>
     </div>
+   )  : <UserAuth/>
   )
 }
