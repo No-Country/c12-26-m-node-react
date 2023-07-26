@@ -1,5 +1,6 @@
 const prisma = require('../db')
 const { validateTransferByEmail } = require('../middleware/validateTransfer')
+const saveTransaction = require('./saveTransactionsController')
 const {
   getWalletIdByUserId,
   hasSufficientBalance,
@@ -39,6 +40,7 @@ const transferBalanceUserToUserByEmail = async (userId, body) => {
         if (receiverWalletId) {
           await decreaseWalletAmount(senderWalletId, amount)
           await increaseWalletAmount(receiverWalletId, amount)
+          await saveTransaction(senderWalletId, "TRANSFER", amount, email, undefined)
           return {
             containErrors: false,
             message: 'Successful transfer',
