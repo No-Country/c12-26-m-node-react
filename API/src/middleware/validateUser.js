@@ -1,8 +1,16 @@
 const prisma = require("../db");
 
 async function validateUser(body) {
-  const { firstName, lastName, documentId, country, email, phone, password } =
-    body;
+  const {
+    firstName,
+    lastName,
+    documentId,
+    country,
+    email,
+    phone,
+    birthDay,
+    password,
+  } = body;
   console.log("Validating user");
 
   const existingUser = await prisma.user.findFirst({
@@ -64,6 +72,12 @@ async function validateUser(body) {
     return {
       containErrors: true,
       message: "This field is required, please enter a phone number.",
+    };
+  }
+  if (!birthDay) {
+    return {
+      containErrors: true,
+      message: "This field is required, please enter a birthDay.",
     };
   }
 

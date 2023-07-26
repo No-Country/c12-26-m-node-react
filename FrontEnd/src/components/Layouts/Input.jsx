@@ -1,22 +1,27 @@
-function Input({ id, register, type, errors,disabled,placeholder, required,number}) {
+function Input({ id, register, type, required, minLength }) {
+  const { ref, ...registerProps } = register(id, {
+    required: required && "Este campo es requerido.",
+    minLength: minLength && {
+      value: minLength,
+      message: `El campo debe tener al menos ${minLength} caracteres.`,
+    },
+  });
+
   return (
     <div className="w-full relative">
       <input
         type={type}
-        disabled={disabled}
-        placeholder={placeholder}
-        {...register(id, {valueAsNumber: number,  required })}
+        {...registerProps}
+        ref={ref}
         className={`
           block w-full mt-1 p-2 
           border-gray-800 
           rounded-md 
           shadow-sm 
-          focus:border-gray-300 
           focus:ring 
           focus:ring-indigo-200 
           focus:ring-opacity-50
-          ${errors[id] ? 'border-rose-500' : 'border-neutral-300'}
-          ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}
+          focus:border-indigo-300
         `}
       />
     </div>

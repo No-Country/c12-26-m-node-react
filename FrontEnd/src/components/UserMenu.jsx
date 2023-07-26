@@ -1,13 +1,13 @@
 import { AiOutlineMenu } from "react-icons/ai";
 import { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
 import MenuItem from "./MenuItem";
 import Avatar from "./Avatar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function UserMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);

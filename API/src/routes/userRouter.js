@@ -15,7 +15,7 @@ router.post("/newuser", async (req, res) => {
     const newUser = await signUp(req.body);
     res.status(200).send(newUser);
   } catch (error) {
-    res.status(400).json(error.message);
+    res.status(400).send(error.message);
   }
 });
 
