@@ -3,6 +3,7 @@ const Router = require("express");
 const userRouter = require("./userRouter");
 const loginRouter = require("./loginRouter");
 const stripePaymentRouter = require("./stripePaymentRouter");
+const transactionsRouter = require("./transactionsRouter")
 const LoginGoogleRouter = require("./LoginGoogleRouter");
 const router = Router();
 
