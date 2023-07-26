@@ -1,6 +1,7 @@
-function Input({ id, register, type, required, minLength }) {
+function Input({ id, register, type, number, required, minLength }) {
   const { ref, ...registerProps } = register(id, {
     required: required && "Este campo es requerido.",
+    valueAsNumber: number,
     minLength: minLength && {
       value: minLength,
       message: `El campo debe tener al menos ${minLength} caracteres.`,
@@ -15,7 +16,7 @@ function Input({ id, register, type, required, minLength }) {
         ref={ref}
         className={`
           block w-full mt-1 p-2 
-          border-gray-300 
+          border-gray-800 
           rounded-md 
           shadow-sm 
           focus:ring 

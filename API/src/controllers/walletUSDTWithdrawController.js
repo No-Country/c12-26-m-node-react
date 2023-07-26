@@ -1,5 +1,6 @@
 const validateWithdrawUsdt = require('../middleware/validateWithdraw')
 const { usdtWithdraw } = require('../utils/usdtWithdraw')
+const saveTransaction = require('./saveTransactionsController')
 const {
   getWalletIdByUserId,
   decreaseWalletAmount,
@@ -18,6 +19,7 @@ const walletUsdtWithdraw = async (userId, amount, walletReceiver) => {
         const transactionTx = await usdtWithdraw(amount, walletReceiver)
         if (transactionTx) {
           await decreaseWalletAmount(senderWalletId, amount)
+          await saveTransaction(senderWalletId, "WITHDRAWAL", amount, undefined, walletReceiver)
           return {
             containErrors: false,
             message: 'Successful transfer',

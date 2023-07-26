@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import Skeleton from "react-loading-skeleton";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Input from "../Layouts/Input";
@@ -9,8 +8,6 @@ import { getCurrentUser } from "../../hooks/CurrentUserSlice";
 import { closeModal } from "../../hooks/modalSlice";
 import { useNavigate } from "react-router-dom";
 import ErrorContainer from "./ErrorContainer";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const provider = new GoogleAuthProvider();
@@ -38,13 +35,11 @@ export default function Login() {
 
   const onSubmit = (data) => {
     setIsLoading(true);
-    console.log(data);
     axios
       .post(`${process.env.REACT_APP_API_URL}login`, data)
       .then((response) => {
         const responseData = response.data; // Obtiene el objeto completo de la respuesta
         toast.success(responseData.message); // Muestra el mensaje de éxito o error utilizando solo la propiedad "message"
-        console.log(responseData);
         dispatch(getCurrentUser(responseData)); // Actualiza el estado del usuario
         reset();
         navigate("/main");
@@ -113,17 +108,17 @@ export default function Login() {
   return (
     <div className="overflow-hidden bg-white flex flex-col gap-20 w-full pt-3 pb-12 px-5 rounded-[40px] mt-40">
       <div className="flex flex-col ml-3 gap-3 items-start">
-        <img
+        <img alt=""
           src="https://file.rendit.io/n/nmlOSxeMZqtYSkZsbYkf.svg"
           className="min-h-0 min-w-0 mb-1 ml-24 mt-8"
         />
         <div className="self-stretch relative flex flex-col">
-          <img
+          <img alt=""
             src="https://file.rendit.io/n/ZpmfGNSoh4nDrXZIGkG5.svg"
             className="w-8 h-8 min-h-0 min-w-0 absolute top-[180px] left-[312px]"
           />
           <div className="border-solid w-6 h-6 absolute top-[235px] left-6 flex flex-col items-center border-black border rounded-sm">
-            <img
+            <img alt=""
               src="https://file.rendit.io/n/ha1LGvyn6wNJvnCUH1Pi.svg"
               className="min-h-0 min-w-0 w-6"
             />
@@ -141,7 +136,7 @@ export default function Login() {
             <div className="flex flex-col gap-6">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="border-solid border-[#6528bd] bg-white flex flex-row gap-3 h-12 shrink-0 items-center px-3 border-2 rounded-lg">
-                  <img
+                  <img alt="alt"
                     src="https://file.rendit.io/n/Hp8IRWkhFNI8H9izwjmy.svg"
                     className="min-h-0 min-w-0 w-6 shrink-0"
                   />
@@ -159,7 +154,7 @@ export default function Login() {
                 </div>
               </form>
               <div className="border-solid border-[#6528bd] bg-white flex flex-row gap-3 h-12 shrink-0 items-center px-3 border-2 rounded-lg">
-                <img
+                <img alt="alt"
                   src="https://file.rendit.io/n/ZOvi1BusR5aIoUdDoDBD.svg"
                   className="min-h-0 min-w-0 w-6 shrink-0"
                 />
@@ -185,7 +180,7 @@ export default function Login() {
               >
                 Ingresar
               </div>
-              <img
+              <img alt="alt"
                 src="https://file.rendit.io/n/vusQpl2wJZEkhJFhHnee.svg"
                 className="min-h-0 min-w-0 w-6 shrink-0"
               />
@@ -198,7 +193,7 @@ export default function Login() {
         </div>
         <div className="self-center flex flex-row gap-6 items-center">
           <button onClick={loginGoogle}>
-            <img
+            <img alt="alt"
               src="https://file.rendit.io/n/eBQuwxRpmI9plflJr4Dm.svg"
               className="min-h-0 min-w-0 mt-1 w-12 shrink-0"
             />
@@ -211,7 +206,7 @@ export default function Login() {
         </div>
         <button
           className="text-xl font-['Lato'] font-semibold leading-[28.6px] text-[#6528bd] w-[108px] shrink-0 h-[88.46%]"
-          onClick={() => navigate("/register")}
+          onClick={() => dispatch(closeModal())}
         >
           Registrarse
         </button>

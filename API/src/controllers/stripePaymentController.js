@@ -1,3 +1,4 @@
+const {saveTransaction} = require('./saveTransactionsController')
 const {
   getWalletIdByUserId,
   increaseWalletAmount,
@@ -43,6 +44,7 @@ const webHookStripe = async (request, response) => {
     case 'payment_intent.succeeded':
       const walleId = await getWalletIdByUserId(userId)
       await increaseWalletAmount(walleId, payAmount)
+      await saveTransaction(walleId, "DEPOSIT", payAmount, undefined, undefined)
       console.log(
         `Payment succeeded for user the ID: ${userId} of amount : ${payAmount}`
       )

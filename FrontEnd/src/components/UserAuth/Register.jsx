@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Skeleton from "react-loading-skeleton";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import Countries from "../../assets/countrybyname.json";
 import Input from "../Layouts/Input";
-import { openModal, showLogin, showRegister } from "../../hooks/modalSlice";
+import { openModal } from "../../hooks/modalSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getCurrentUser } from "../../hooks/CurrentUserSlice";
@@ -245,6 +244,18 @@ export default function RegisterModal() {
           >
             Registrarse
           </button>
+          <div className="flex flex-row gap-2 items-center ml-12 mr-8">
+        <div className="whitespace-nowrap text-xl font-['Lato'] leading-[26px] text-black/85 w-3/5">
+          Ya tienes una cuenta?<div className="contents"> </div>
+        </div>
+        <br/>
+        <button
+          className="text-xl font-['Lato'] font-semibold leading-[28.6px] text-[#6528bd] w-[108px] shrink-0 h-[88.46%]"
+          onClick={() => dispatch(openModal())}
+        >
+           Inicia sesión
+        </button>
+      </div>
         </form>
         {error && (
           <ErrorContainer errorMessage={error} onClose={handleCloseError} />
