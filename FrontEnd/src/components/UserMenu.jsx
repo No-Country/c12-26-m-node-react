@@ -3,11 +3,12 @@ import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import MenuItem from "./MenuItem";
 import Avatar from "./Avatar";
-
+import { useNavigate } from "react-router-dom";
 
 function UserMenu() {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
@@ -28,8 +29,8 @@ function UserMenu() {
       {isOpen && (
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-white overflow-hidden right-0 top-12 text-sm">
           <div className="flex flex-col cursor-pointer">
-            <MenuItem label="Login" onClick={() => console.log("Login")} />
-            <MenuItem label="Sign up"  />
+            <MenuItem label="Login" onClick={() => navigate("/")} />
+            <MenuItem label="Sign up" onClick={() => navigate("/register")} />
           </div>
         </div>
       )}
