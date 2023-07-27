@@ -1,24 +1,31 @@
 import React from "react";
 import "./App.css";
-import Skeleton from "react-loading-skeleton";
-import { useSelector } from "react-redux";
 import Navbar from "./components/Navbar/Navbar";
-import RegisterModal from "./components/Modals/RegisterModal";
+import { Toaster } from "react-hot-toast";
+import MainPage from "./pages/MainPage";
+import { Routes, Route } from "react-router-dom";
+import UserAuth from "./pages/UserAuth";
+import Payment from "./components/Stripe/Payment";
+import Transaction from "./pages/Transaction"
+import Profile from "./pages/Profile";
+import ReceivePayment from "./pages/ReceivePayment";
 
 function App() {
-  const isOpen = useSelector((state) => state.modal.isOpen);
-
   return (
     <>
       <div>
         <Navbar />
       </div>
-      <div className="flex flex-col items-center pt-28">
-        <h1>Latam Wallet</h1>
-        {isOpen && <RegisterModal />}
-        <Skeleton />
-        <Skeleton />
-        <Skeleton />
+        <Toaster />
+      <div className="flex flex-col items-center justify-center">      
+      <Routes>
+        <Route path="/" element={<UserAuth />} />
+        <Route path="main" element={<MainPage />} />
+        <Route path="payment" element={<Payment/>}/>
+        <Route path="transactions" element={<Transaction/>}/>
+        <Route path="receive" element={<ReceivePayment/>}/>
+        <Route path="userProfile" element={<Profile />}/>
+      </Routes>
       </div>
     </>
   );

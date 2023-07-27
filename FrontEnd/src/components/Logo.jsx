@@ -1,13 +1,15 @@
-import { GrGoogleWallet } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 function Logo() {
   return (
     <div>
-      <GrGoogleWallet
-        className="hidden md:block cursor-pointer"
-        height="100"
-        width="100"
+      <Link to="/main">
+      <img
+        src="images/logo.svg"
+        alt="Logo"
+        className="hidden md:block cursor-pointer w-12"
       />
+      </Link>
     </div>
   );
 }

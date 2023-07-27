@@ -72,32 +72,4 @@ const getUsers = async function () {
   return allUsers;
 };
 
-// Codigo creado por Christian //
-const profile = async (req, res) => {
-  try {
-    const user = await prisma.user.findUnique({
-      where: {
-        id: req.userId, // Cargado en validateToken
-      },
-      select: {
-        // User sin exponer el password
-        firstName: true,
-        secondName: true,
-        lastName: true,
-        secondLastName: true,
-        birthDay: true,
-        phone: true,
-        documentId: true,
-        country: true,
-        email: true,
-        profileImg: true,
-      },
-    });
-    res.json(user);
-  } catch (error) {
-    res.status(500).json({ message: "Error" });
-    console.log(error);
-  }
-};
-
-module.exports = { signUp, getUsers, profile };
+module.exports = { signUp, getUsers };
