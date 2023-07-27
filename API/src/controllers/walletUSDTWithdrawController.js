@@ -1,6 +1,6 @@
 const validateWithdrawUsdt = require('../middleware/validateWithdraw')
 const { usdtWithdraw } = require('../utils/usdtWithdraw')
-const saveTransaction = require('./saveTransactionsController')
+const {saveTransaction} = require('./saveTransactionsController')
 const {
   getWalletIdByUserId,
   decreaseWalletAmount,

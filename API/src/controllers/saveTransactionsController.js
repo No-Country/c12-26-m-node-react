@@ -20,7 +20,6 @@ const saveTransaction = async (walletid, transactionsType, amount, email, wallet
         const transaction = await prisma.transaction.create({
           data: data,
         });
-    
         return transaction;
       } catch (error) {
         console.log(error)
