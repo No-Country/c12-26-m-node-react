@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import Heading from '../components/Layouts/Heading';
 import ErrorContainer from '../components/UserAuth/ErrorContainer';
 import UserAuth from './UserAuth';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Transaction () {
     const { user } = useSelector((state) => state.user);
@@ -94,7 +95,7 @@ export default function Transaction () {
       </div>
     </div>
     <div class="mt-6">
-      <button onClick={handleSubmit(onSubmit)} class="w-full cursor-pointer rounded-[4px] bg-purple-600 text-[#00FFCB] px-3 py-[6px] text-center font-semibold">Enviar</button>
+      <button onClick={handleSubmit(onSubmit)} class="w-full cursor-pointer rounded-[4px] bg-purple-600 text-[#00FFCB] px-3 py-[6px] text-center font-semibold">{isLoading ?<LoadingSpinner/> : "Enviar"}</button>
     </div>
   </div>
   {error && (

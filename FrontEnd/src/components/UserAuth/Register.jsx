@@ -12,7 +12,6 @@ import { getCurrentUser } from "../../hooks/CurrentUserSlice";
 import ErrorContainer from "./ErrorContainer";
 
 export default function RegisterModal() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null); // Nuevo estado para almacenar el mensaje de error
@@ -51,7 +50,7 @@ export default function RegisterModal() {
         console.log(responseData.message);
         dispatch(getCurrentUser(responseData));
         reset();
-        navigate("/");
+        dispatch(openModal())
       })
       .catch((error) => {
         // Verificar si el objeto de respuesta tiene una propiedad 'message' con el mensaje de error

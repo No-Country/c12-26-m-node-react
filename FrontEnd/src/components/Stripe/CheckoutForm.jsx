@@ -1,10 +1,11 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutForm({ options }) {
   const stripe = useStripe();
   const elements = useElements();
-
+  const navigate = useNavigate();
   const [message, setMessage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -56,6 +57,7 @@ export default function CheckoutForm({ options }) {
         setMessage("Payment succeeded!");
         // Manejar el caso de éxito, por ejemplo, mostrar un mensaje de éxito o actualizar el saldo de la wallet.
       }
+      navigate("/main")
     } catch (error) {
       console.error(
         "Error durante la confirmación del intento de pago:",

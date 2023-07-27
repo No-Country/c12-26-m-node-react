@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import ErrorContainer from '../components/UserAuth/ErrorContainer';
 import UserAuth from './UserAuth';
-
+import LoadingSpinner from "../components/LoadingSpinner"
 export default function ReceivePayment() {
     const { user } = useSelector((state) => state.user);
     const [isLoading,setIsLoading] = useState(false)
@@ -96,7 +96,7 @@ export default function ReceivePayment() {
       </div>
     </div>
     <div class="mt-6">
-      <button onClick={handleSubmit(onSubmit)} disabled={isLoading} class="w-full cursor-pointer rounded-[4px] bg-purple-600 text-[#00FFCB] px-3 py-[6px] text-center font-semibold">Enviar</button>
+      <button onClick={handleSubmit(onSubmit)} disabled={isLoading} class="w-full cursor-pointer rounded-[4px] bg-purple-600 text-[#00FFCB] px-3 py-[6px] text-center font-semibold">{isLoading ?<LoadingSpinner/> : "Enviar"}</button>
     </div>
   </div>
   {error && (

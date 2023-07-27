@@ -66,7 +66,7 @@ export default function MainPage() {
       </div>
       <div>
       <div>
-        <div className='bg-[#6528BD] mt-[222px] w-screen py-6 lg:py-8 text-white shadow-sm p-2 '>
+        <div className='bg-[#6528BD] mt-[310px] w-screen py-6 lg:py-8 text-white shadow-sm p-2 '>
           <div className='flex flex-row flex-start justify-center items-center m-1'>
           <h2 class="text-xl font-semibold mb-2">Historial de transacciones</h2>
           </div>
