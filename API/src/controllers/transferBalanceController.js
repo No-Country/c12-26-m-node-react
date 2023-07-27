@@ -1,6 +1,6 @@
 const prisma = require('../db')
 const { validateTransferByEmail } = require('../middleware/validateTransfer')
-const saveTransaction = require('./saveTransactionsController')
+const {saveTransaction} = require('./saveTransactionsController')
 const {
   getWalletIdByUserId,
   hasSufficientBalance,
