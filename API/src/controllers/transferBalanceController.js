@@ -19,7 +19,7 @@ const transferBalanceUserToUserByEmail = async (userId, body) => {
   } else {
     const userReceiver = await prisma.user.findUnique({
       where: {
-        email: email,
+        email: email.toLowerCase()
       },
     })
 
