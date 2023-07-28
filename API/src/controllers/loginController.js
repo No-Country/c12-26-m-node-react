@@ -8,14 +8,13 @@ const { getWalletIdByUserId, userWalletBalance } = require("./walletController")
 const signIn = async (body) => {
   let isValidate = await validateLogin(body);
   const { email, password } = body;
-
   if (isValidate.containErrors) {
     throw new Error(JSON.stringify(isValidate));
   }
 
   const user = await prisma.user.findUnique({
     where: {
-      email: email,
+      email: email.toLowerCase(),
     },
   });
 
