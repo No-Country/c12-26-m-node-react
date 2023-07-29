@@ -223,25 +223,10 @@ API desarrollada para el proyecto LatamWallet para la emulacion en No Country
     }
     ```
 
-- **WebHook para uso interno de Stripe:** `/payment/create-payment-intent`
+- **WebHook para uso interno de Stripe:** `/payment/stripe-web-hook`
 
   - Descripción: Endpoint para escuchar los eventos enviados por Stripe al procesar un pago (Ya sea un pagos sastifactorios rechazados, en el caso de sastifactorio se asigna el saldo al usuario en su wallet).
   - Método: POST
-  - Header: ``` Authorization: token ```
-  - Body:
-    ```json
-    {
-        "amount": 10
-    }
-    ```
-  - Respuesta code:
-    ```Status code: 200 ```
-  - Respuesta:
-    ```json
-    { 
-        "clientSecret": "clientSecret"
-    }
-    ```
 
 ## Variables de entorno
 ```
