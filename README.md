@@ -9,7 +9,7 @@
 
 Este proyecto consiste en el desarrollo de una billetera digital que permitirá a los usuarios en Latinoamérica realizar pagos de manera rápida, fácil y segura. La billetera digital estará respaldada por la criptomoneda USDT, lo que le dará a los usuarios una forma de proteger su dinero de la inflación e inestabilidad de sus monedas locales.
 
-Los usuarios de la billetera digital podrán realizar pagos a otros usuarios de la billetera, retirar dinero a sus billeteras de criptomonedas.
+Los usuarios de la billetera digital podrán realizar pagos a otros usuarios de la billetera o retirar dinero a sus billeteras de criptomonedas.
 
 El objetivo de este proyecto es proporcionar una solución de pago segura, conveniente y asequible a los usuarios en Latinoamérica. La billetera digital tendrá el potencial de revolucionar la forma en que las personas realizan pagos en la región, y de mejorar la calidad de vida de millones de personas.
 
@@ -64,7 +64,7 @@ Puedes encontrar mas en el <a href="https://www.figma.com/file/Chce0vudkmW5cDb3W
 ### Backend
 
 | <img src="https://avatars.githubusercontent.com/u/86586454?v=4" width=50>| <img src="https://avatars.githubusercontent.com/u/90370429?v=4" width=50>   |  
-:-:|:-:|:-:|
+:-:|:-:|
 | **Christian Herrera**  | **Delwin Hernandez** | 
 | <a href="https://github.com/cahov"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/cahodev/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Delwin183"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/delwin-hernandez-b926182b/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
 
