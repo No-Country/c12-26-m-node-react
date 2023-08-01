@@ -39,12 +39,22 @@ El objetivo de este proyecto es proporcionar una solución de pago segura, conve
 
 Puedes encontrar mas en el <a href="https://www.figma.com/file/Chce0vudkmW5cDb3Wah1ui/Billetera-Digital" target="_blank" rel="noopener noreferrer">Figma del proyecto</a>
 
-> Tecnologias usadas 🛠️
+---
+
+
+> Herramientas usadas en el Diseño
+
+![Figma](https://img.shields.io/badge/figma-blue.svg?style=for-the-badge&logo=figma&logoColor=white)
+![Adobe Illustrator](https://img.shields.io/badge/adobe%20illustrator-blue.svg?style=for-the-badge&logo=adobe&logoColor=white)
+
+> Tecnologias usadas en el Frontend
 
 ![React](https://img.shields.io/badge/-ReactJs-61DAFB?logo=react&logoColor=white&style=for-the-badge)
 ![Javascript](https://img.shields.io/badge/javascript-blue.svg?style=for-the-badge&logo=Javascript&logoColor=white)
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
----
+
+> Tecnologias usadas en el Backend
+> 
 ![Node.js](https://img.shields.io/badge/node-blue.svg?style=for-the-badge&logo=node.js&logoColor=white)
 ![Java](https://img.shields.io/badge/Express-gray.svg?style=for-the-badge&logo=express&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-darkblue.svg?style=for-the-badge&logo=prisma&logoColor=white)
@@ -52,7 +62,14 @@ Puedes encontrar mas en el <a href="https://www.figma.com/file/Chce0vudkmW5cDb3W
 
 ---
 
-## Developers  
+## Developers
+
+### Diseño UI/UX
+
+| <img src="https://mir-s3-cdn-cf.behance.net/user/115/9fcb381048246009.626b0fee7d22b.jpg" width=50>| <img src="https://media.licdn.com/dms/image/D4E03AQF6g7i2F2RZBQ/profile-displayphoto-shrink_800_800/0/1674867213764?e=1696464000&v=beta&t=n9-SYDcx8BLVkoGTx5d_ChKmoQmW-ILhUI6gqYakqm0" width=50>  |  
+:-:|:-:|
+| **Tupac Dambolena**  | **Josh Yanqui** | 
+| <a href="https://www.behance.net/tupacdambolena"><img src="https://img.shields.io/badge/behance-blue.svg?style=for-the-badge&logo=behance&logoColor=white"/></a> <a href="https://www.linkedin.com/in/tupac-dambolena/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://www.behance.net/joshyanqui"><img src="https://img.shields.io/badge/behance-blue.svg?style=for-the-badge&logo=behance&logoColor=white"/></a> <a href="https://www.linkedin.com/in/joshyanqui/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
 
 ### Frontend
 
@@ -67,10 +84,3 @@ Puedes encontrar mas en el <a href="https://www.figma.com/file/Chce0vudkmW5cDb3W
 :-:|:-:|
 | **Christian Herrera**  | **Delwin Hernandez** | 
 | <a href="https://github.com/cahov"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/cahodev/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Delwin183"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/delwin-hernandez-b926182b/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-
-### Diseño UI/UX
-
-| <img src="https://mir-s3-cdn-cf.behance.net/user/115/9fcb381048246009.626b0fee7d22b.jpg" width=50>| <img src="https://media.licdn.com/dms/image/D4E03AQF6g7i2F2RZBQ/profile-displayphoto-shrink_800_800/0/1674867213764?e=1696464000&v=beta&t=n9-SYDcx8BLVkoGTx5d_ChKmoQmW-ILhUI6gqYakqm0" width=50>  |  
-:-:|:-:|
-| **Tupac Dambolena**  | **Josh Yanqui** | 
-| <a href="https://www.behance.net/tupacdambolena"><img src="https://img.shields.io/badge/behance-blue.svg?style=for-the-badge&logo=behance&logoColor=white"/></a> <a href="https://www.linkedin.com/in/tupac-dambolena/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://www.behance.net/joshyanqui"><img src="https://img.shields.io/badge/behance-blue.svg?style=for-the-badge&logo=behance&logoColor=white"/></a> <a href="https://www.linkedin.com/in/joshyanqui/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
